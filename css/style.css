@@ -7,13 +7,13 @@
 }
 body {
   font-family: 'Lato', sans-serif;
-  color: #4c4c4c;
+  color: #04B4AE;
   background: #f8fdf3;
 }
 h1,
 p,
 form button {
-  color: white;  
+  color:#fff;  
 }
 h1 {
   font-family: 'Courgette', cursive;
@@ -44,7 +44,7 @@ form {
 form button {
   padding: 0 1em;
   font-size: 1em;
-  background: #7bcbc4;
+  background: #f5f516;
   border-radius: .2em;
 }
 ul {
@@ -113,7 +113,7 @@ li button:last-child {
   max-width: 900px;
   margin: 2.5em auto;
   border-radius: .35em;
-  background: #fcfcfc;
+  background: #c1ecdf;
   overflow: hidden;
   box-shadow: 0 0 26px rgba(0,0,0, .13);
 }

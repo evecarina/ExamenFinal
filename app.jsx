@@ -1,8 +1,9 @@
 class Model{
     constructor(){
         this.input=null;
+        this.comment=null;
         this.guests=[];
-        this.guestcomments=[];
+        this.cont=[];
         this.render=null;
     }
     subscribe(render){
@@ -12,7 +13,8 @@ class Model{
       this.render();
     }
     addName(){
-      this.guests.push({name:this.input.value,id:Utils.uuid(),confirmed:''});
+      this.guests.push({name:this.input.value ,comment:this.comment.value,id:Utils.uuid(),confirmed:''});
+      // this.guests.push({comment:this.comment.value,id:Utils.uuid(),confirmed:''});
       this.input.value='';      
       this.update();
     }
@@ -29,27 +31,28 @@ class Model{
 const Guests=({model})=>{
   return (<ul>
     {model.guests.map((g)=>{
-      return <li key={g.id} className={g.confirmed}>{g.name}{g.comment}
+      return <li key={g.id} className={g.confirmed}>{g.name}<br/>{g.comment}
       <br/><button onClick={()=>model.delete(g.id)}>Remove</button>     
       </li>  
     })
     }   
     </ul>);   
 }
-
 const View=({title,model})=>{
   return (
     <div className="wrapper">
+    
       <header>
         <p> Nuevo Comentario </p>
         <form onSubmit={(e)=>{e.preventDefault();model.addName()}}>
           <input type="text" placeholder="User" onChange={e => (model.input = e.target)} />      
-          <input type="text" placeholder="Comment" onChange={e => (model.input = e.target)} />
+          <input type="text" placeholder="Comment" onChange={e => (model.comment = e.target)} />
           <button type="submit">Post Comment</button>
         </form>         
       </header>
       <div className="main">	
         <h2>Comments</h2>
+        <p>{model.guests.length}</p>
         <Guests model={model}/>
       </div>
     </div>
